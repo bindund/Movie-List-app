@@ -2,12 +2,28 @@ import React , {useState , useEffect} from 'react'
 import MoviesCard from './MoviesCard';
 import Select from '@material-ui/core/Select';
 import SearchIcon from '@material-ui/icons/Search';
+import MenuItem from '@material-ui/core/MenuItem';
+import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
 import {useSelector} from 'react-redux'
 import './Movieslist.css'
 
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+        margin: theme.spacing(1),
+      minWidth: 120,
+      
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(1),
+    },
+  }));
+
 
 const MoviesList = (props) => {
-    
+    const classes = useStyles();
+
 
     const [search , setSearch] = useState('')
     const [filter , setfilter] = useState('')
@@ -69,11 +85,16 @@ const MoviesList = (props) => {
                  <button type="submit" class="searchButton">
                     <i class="fa fa-search"><SearchIcon/></i>
                 </button>
+                <div class="order">
+                <FormControl  className={classes.formControl}>
+                
                         <Select value={filter} onChange={changeSort}>
-                        <option aria-label="None" value="" placeholder="none">None</option>
-                        <option value="ascending">ascending</option>
-                        <option value="descending">descending</option>
+                        <MenuItem value="OrderBy"> OrderBy </MenuItem>
+                        <MenuItem value="ascending">ascending</MenuItem>
+                        <MenuItem value="descending">descending</MenuItem>
                         </Select>
+                </FormControl>
+                </div>
                          </div>
                 </div>
                 </form >
@@ -82,7 +103,9 @@ const MoviesList = (props) => {
             <div >
             {
                 fill.map((ele) => {
-                    return <MoviesCard key={ele.id} movie={ele}/>
+                    return (
+                    <MoviesCard key={ele.id} movie={ele}/>
+                    )
                 })
             }
             </div>

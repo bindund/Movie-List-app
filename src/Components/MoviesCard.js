@@ -5,8 +5,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import './Movieslist.css'
-
-
   
 const MoviesCard = (props) => {
     const dispatch = useDispatch()
@@ -16,12 +14,13 @@ const MoviesCard = (props) => {
     }
     
     return(
-              <div class="mui-card xs-shadow">  
-                <Typography>Name - {movie.name}</Typography>
-                <Typography>Rank - {movie.rank}</Typography>
-                 <Button  onClick={() => {handleRemove(movie.id)}}><DeleteIcon/></Button><br/>          
-            </div>
-                                    
+              
+              <div class="mui-card xs-shadow">
+                 <img src="./logo.jpg" class="mui-card-img-top" alt="..."/>
+                <h5 >Name - {movie.name}</h5>
+                <p>Rank - {movie.rank}</p>
+                 <Button  onClick={() => {handleRemove(movie.id)}}><DeleteIcon/></Button><br/>   
+             </div>                            
     )
 }
 export default MoviesCard

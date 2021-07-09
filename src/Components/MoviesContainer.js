@@ -6,8 +6,6 @@ import "./MoviesContainer.css"
 
 
 const MoviesContainer =(props) => {
-    
-
     return(
         <>
         <main>
